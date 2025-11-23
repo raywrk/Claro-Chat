@@ -1,0 +1,160 @@
+* {
+  box-sizing: border-box;
+}
+
+.chat-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.chat-header {
+  background: linear-gradient(90deg, #d50000, #ff3b3b);
+  color: #fff;
+  border-radius: 12px;
+  padding: 14px 16px;
+  box-shadow: 0 8px 20px rgba(213, 0, 0, 0.15);
+}
+
+.chat-header h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.chat-messages {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+  min-height: 360px;
+  max-height: 65vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #fafafa;
+}
+
+.msg {
+  max-width: 80%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  line-height: 1.4;
+  animation: fadeInUp 160ms ease-out;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+
+.msg.bot {
+  align-self: flex-start;
+  background: #fff5f5;
+  border: 1px solid #ffd9d9;
+}
+
+.msg.user {
+  align-self: flex-end;
+  background: #eef2ff;
+  border: 1px solid #d9e2ff;
+}
+
+.chat-input {
+  display: flex;
+  gap: 8px;
+}
+
+.chat-input input[type='text'] {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+}
+
+.chat-input button {
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  background: #d50000;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(213,0,0,0.2);
+}
+
+.upload input[type='file'] {
+  padding: 8px;
+}
+
+.image-result {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.image-result img {
+  width: 100%;
+  max-width: 480px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+.image-result .download {
+  align-self: flex-start;
+  padding: 8px 12px;
+  background: #111827;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+}
+.msg.typing {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dots {
+  display: inline-flex;
+  gap: 6px;
+}
+
+.dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #9b1c1c;
+  opacity: 0.3;
+  animation: bounce 900ms infinite ease-in-out;
+}
+
+.dots span:nth-child(2) { animation-delay: 150ms; }
+.dots span:nth-child(3) { animation-delay: 300ms; }
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: translateY(0); opacity: 0.3; }
+  40% { transform: translateY(-4px); opacity: 0.8; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.upload-bubble {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.upload-bubble .upload-btn {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  background: #111827;
+  color: #fff;
+  cursor: pointer;
+}
+
+.upload-bubble .hint {
+  font-size: 13px;
+  opacity: 0.8;
+}

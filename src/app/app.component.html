@@ -1,0 +1,47 @@
+<div class="chat-container">
+  <header class="chat-header">
+    <h1>A Claro tá na nossa — Chat</h1>
+  </header>
+
+  <section class="chat-messages" #messagesContainer>
+    @for (m of messages; track m) {
+      <div class="msg" [class.bot]="m.sender === 'bot'" [class.user]="m.sender === 'user'">
+        @if (m.text) { <p>{{ m.text }}</p> }
+        @if (m.imageUrl) {
+          <div class="image-result">
+            <img [src]="m.imageUrl" alt="Imagem personalizada" />
+            <a class="download" [href]="m.imageUrl" download="claro-bora2026.png">Baixar imagem</a>
+          </div>
+        }
+      </div>
+    }
+    @if (step === 'upload') {
+      <div class="msg bot upload-bubble">
+        <button class="upload-btn" (click)="fileInput.click()">Enviar foto</button>
+        <span class="hint">JPG/PNG, até 10MB</span>
+        <input #fileInput type="file" accept="image/*" hidden (change)="onFileSelected($event)" />
+      </div>
+    }
+    @if (isTyping) {
+      <div class="msg bot typing">
+        <div class="dots">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    }
+  </section>
+
+  <section class="chat-input">
+    @if (step !== 'upload' && step !== 'done') {
+      <input
+        type="text"
+        [placeholder]="step === 'intro' ? 'Digite: Atitude que transforma.' : step === 'state' ? 'Seu estado' : 'Algo típico do seu estado'"
+        [(ngModel)]="inputValue"
+        (keydown.enter)="onSend()"
+      />
+      <button (click)="onSend()">Enviar</button>
+    }
+  </section>
+</div>
+
+
